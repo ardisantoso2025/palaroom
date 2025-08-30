@@ -64,7 +64,7 @@
     .nav-links a{opacity:.9}
     .nav-links a:hover{opacity:1}
     .menu-toggle{display:none}
-
+    .menu-toggle { display: none !important; }
     /* Mobile */
     @media (max-width:900px){
       .menu-toggle{display:inline-flex}
@@ -169,6 +169,27 @@
       .two{grid-template-columns:1fr}
       .quotes{grid-template-columns:1fr}
     }
+    .kamar-slider {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 12px;
+    }
+    .kamar-slider .card {
+      min-width: 320px;
+      flex: 0 0 320px;
+      scroll-snap-align: start;
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    @media (max-width:640px) {
+      .kamar-slider .card {
+        min-width: 85vw;
+        flex: 0 0 85vw;
+      }
+    }
   </style>
   <!-- (Opsional) Jika kamu punya file styles.css sendiri, biarkan ini. -->
   <link rel="stylesheet" href="styles.css">
@@ -211,16 +232,16 @@
   <section class="hero">
     <div class="container hero-inner">
       <div>
-        <span class="badge">Premium Kost • Fully Furnished • Security 24/7</span>
-        <h1>Nyaman, Aman, dan Strategis — <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent;">Premium Kost</span> untuk Hidup Lebih Produktif</h1>
-        <p class="lead">Kamar eksklusif berperabot, Wi-Fi up to 200 Mbps, smart access, laundry & cleaning terjadwal. Dekat kampus dan pusat bisnis. <b>Mulai Rp 2.500.000/bulan</b>.</p>
+        <span class="badge">Premium Kost • Full Furnished • Harian dan Bulanan</span>
+        <h1>Kost rasa Villa — <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent;">Premium</span> di tengah kota Bandar Lampung</h1>
+        <p class="lead">Kost Mezzanine Excusive di Pusat Kota <b>Mulai Rp 900.000/bulan</b>.</p>
         <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap">
           <a href="#booking" class="btn btn-primary">Cek Ketersediaan</a>
           <a href="https://wa.me/6281234567890?text=Halo%20Kost%20Elite,%20saya%20ingin%20tanya%20ketersediaan%20kamar." class="btn btn-ghost">Chat WhatsApp</a>
         </div>
         <div class="stats" style="margin-top:18px">
-          <div class="stat"><div class="muted">Kamar Tersedia</div><b>7</b></div>
-          <div class="stat"><div class="muted">Rating Tamu</div><b>4.9/5</b></div>
+          <div class="stat"><div class="muted">Room</div><b>7</b></div>
+          <div class="stat"><div class="muted">Rating</div><b>4.9/5</b></div>
           <div class="stat"><div class="muted">Wi-Fi</div><b>200 Mbps</b></div>
         </div>
       </div>
@@ -244,43 +265,43 @@
       <div class="grid-4">
         <div class="card">
           <div class="icon" aria-hidden="true">🛏️</div>
-          <h3>Kamar Berperabot</h3>
-          <p class="muted">Bed premium, lemari, meja kerja ergonomis, kursi nyaman, tirai blackout.</p>
+          <h3>Kamar Mezzanine</h3>
+          <p class="muted">Bed premium, lemari, meja kerja, kursi nyaman, tirai.</p>
         </div>
         <div class="card">
           <div class="icon">❄️</div>
-          <h3>AC & Sirkulasi</h3>
-          <p class="muted">Pendingin hemat energi + jendela besar untuk cahaya alami.</p>
+          <h3>AC & Kipas</h3>
+          <p class="muted">Dengan jendela besar untuk sirkulasi dan cahaya alami.</p>
         </div>
         <div class="card">
           <div class="icon">📶</div>
           <h3>Wi-Fi Cepat</h3>
-          <p class="muted">Internet stabil hingga 200 Mbps, ideal WFH & kuliah online.</p>
+          <p class="muted">Internet stabil, ideal WFH & kuliah online.</p>
         </div>
         <div class="card">
           <div class="icon">🛁</div>
           <h3>Kamar Mandi Dalam</h3>
-          <p class="muted">Water heater, shower tekanan tinggi, exhaust, & rak toiletries.</p>
+          <p class="muted">Water heater, shower, closet duduk & rak toiletries.</p>
         </div>
         <div class="card">
           <div class="icon">🧺</div>
-          <h3>Laundry & Cleaning</h3>
-          <p class="muted">Laundry terjadwal & pembersihan kamar mingguan.</p>
+          <h3>Mesin Cuci</h3>
+          <p class="muted">Tersedia mesin cuci dan area jemur yang luas.</p>
         </div>
         <div class="card">
           <div class="icon">🍳</div>
           <h3>Dapur Bersama</h3>
-          <p class="muted">Pantry, kulkas, dispenser, & area makan bersih.</p>
+          <p class="muted">Pantry, kulkas, kompor, & area makan bersih.</p>
         </div>
         <div class="card">
           <div class="icon">🎥</div>
-          <h3>CCTV & Akses</h3>
-          <p class="muted">CCTV 24/7, smart lock, tamu tercatat, jam tenang.</p>
+          <h3>CCTV 24/6</h3>
+          <p class="muted">CCTV 24/7 dan akses penghuni 24 jam.</p>
         </div>
         <div class="card">
           <div class="icon">🅿️</div>
           <h3>Parkir</h3>
-          <p class="muted">Parkir aman untuk motor dan sepeda; mobil terbatas.</p>
+          <p class="muted">Parkir aman untuk motor (mobil terbatas).</p>
         </div>
       </div>
     </div>
@@ -293,7 +314,7 @@
         <h2>Tipe Kamar & Harga</h2>
         <span class="muted">Harga sudah termasuk listrik & Wi-Fi</span>
       </div>
-      <div class="grid-3">
+      <div class="kamar-slider">
         <div class="card">
           <span class="badge">Single</span>
           <h3 style="margin:.6rem 0">Studio Comfort</h3>
@@ -337,6 +358,21 @@
           <div style="margin-top:14px; display:flex; gap:10px">
             <a href="#booking" class="btn btn-primary">Booking</a>
             <a href="https://wa.me/6281234567890?text=Minat%20Executive%20Corner" class="btn btn-ghost">Tanya</a>
+          </div>
+        </div>
+        <div class="card">
+          <span class="badge">Baru!</span>
+          <h3 style="margin:.6rem 0">Urban Loft</h3>
+          <div class="price"><span class="num">Rp 2.900.000</span><span class="muted">/bulan</span></div>
+          <div class="includes">
+            <span class="pill">Bed 140×200</span>
+            <span class="pill">Meja kerja</span>
+            <span class="pill">AC & Kipas</span>
+            <span class="pill">Pantry mini</span>
+          </div>
+          <div style="margin-top:14px; display:flex; gap:10px">
+            <a href="#booking" class="btn btn-primary">Booking</a>
+            <a href="https://wa.me/6281234567890?text=Minat%20Urban%20Loft" class="btn btn-ghost">Tanya</a>
           </div>
         </div>
       </div>
