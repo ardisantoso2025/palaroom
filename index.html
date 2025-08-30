@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PALA ROOMS — Premium Kost Nyaman, Aman, Strategis</title>
+  <meta name="description" content="PALA: Kost premium dengan kamar berperabot, AC, Wi-Fi cepat, laundry, cleaning, dan keamanan 24 jam. Lokasi strategis dekat kampus & pusat bisnis." />
+  <meta name="theme-color" content="#111827" />
+  <meta property="og:title" content="PALA ROOMS — Premium Kost Nyaman, Aman, Strategis" />
+  <meta property="og:description" content="Kamar eksklusif, fasilitas lengkap, layanan profesional. Booking mudah via WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#111827;
+      --muted:#9ca3af;
+      --text:#e5e7eb;
+      --accent:#22d3ee;
+      --accent-2:#60a5fa;
+      --ok:#10b981;
+      --warn:#f59e0b;
+      --danger:#ef4444;
+      --ring: 0 0 0 6px rgba(34,211,238,.15);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --radius-sm: 12px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text); background:
+        radial-gradient(800px 400px at 10% -10%, rgba(34,211,238,.15), transparent 60%),
+        radial-gradient(700px 350px at 90% 0%, rgba(96,165,250,.12), transparent 60%),
+        linear-gradient(180deg,#0a0f1c 0%, #0b1020 40%, #0b1020 100%);
+      scroll-behavior:smooth;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1160px; margin:0 auto; padding:0 20px}
+    .btn{display:inline-flex; gap:.6rem; align-items:center; border:0; padding:14px 18px; border-radius:999px; font-weight:700; cursor:pointer; transition:.2s; letter-spacing:.2px}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#041018; box-shadow:var(--shadow)}
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-ghost{background:rgba(255,255,255,.06); color:var(--text); border:1px solid rgba(255,255,255,.08)}
+    .badge{display:inline-flex; align-items:center; gap:.4rem; font-size:.8rem; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); color:var(--text)}
+
+    /* ===== Header (responsif, satu-sumber) ===== */
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(8px);
+      background:rgba(10,15,28,.6); border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; gap:.7rem; align-items:center; font-weight:800; letter-spacing:.5px}
+    .brand-logo{
+      width:36px; height:36px; border-radius:10px;
+      background:conic-gradient(from 210deg, var(--accent), var(--accent-2));
+      box-shadow:0 6px 20px rgba(34,211,238,.25), inset 0 0 20px rgba(255,255,255,.12);
+    }
+
+    /* Satu-sumber menu */
+    .nav-links{display:flex; gap:1.2rem; align-items:center}
+    .nav-links a{opacity:.9}
+    .nav-links a:hover{opacity:1}
+    .menu-toggle{display:none}
+
+    /* Mobile */
+    @media (max-width:900px){
+      .menu-toggle{display:inline-flex}
+      .nav-links{
+        position:absolute; top:72px; left:0; right:0;
+        display:none; flex-direction:column; gap:0;
+        background:#0b1020; border-bottom:1px solid rgba(255,255,255,.06);
+        padding:8px 0;
+      }
+      .nav-links a{
+        display:block; width:100%; padding:14px 20px;
+        border-top:1px solid rgba(255,255,255,.06);
+      }
+      .nav-links .btn.btn-primary{margin:8px 12px; align-self:flex-start}
+      .nav-links.open{display:block}
+    }
+
+    /* Hero */
+    .hero{padding:72px 0 36px}
+    .hero-inner{display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:center}
+    .hero h1{font-size:clamp(28px, 3.8vw, 48px); line-height:1.1; margin:.6rem 0 1rem}
+    .lead{color:var(--muted); font-size:1.05rem}
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:20px; display:grid; gap:14px
+    }
+    .kv{
+      aspect-ratio: 4/3; border-radius:var(--radius); overflow:hidden; position:relative; box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .kv img{width:100%; height:100%; object-fit:cover; display:block}
+    .ribbons{position:absolute; inset:auto 12px 12px auto; display:flex; gap:8px; flex-wrap:wrap}
+    .chip{font-size:.8rem; padding:6px 10px; border-radius:999px; background:rgba(4,16,24,.7); border:1px solid rgba(255,255,255,.08)}
+    .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    .stat{padding:14px; border-radius:12px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.07); text-align:center}
+    .stat b{font-size:1.2rem}
+    /* Sections */
+    section{padding:56px 0}
+    .section-title{display:flex; align-items:end; justify-content:space-between; margin-bottom:20px}
+    h2{margin:0; font-size:clamp(22px,2.6vw,32px)}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+    .card{
+      padding:18px; border-radius:var(--radius); background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08)
+    }
+    .icon{
+      width:40px; height:40px; display:grid; place-items:center; border-radius:12px;
+      background:linear-gradient(135deg, rgba(34,211,238,.2), rgba(96,165,250,.2));
+      border:1px solid rgba(255,255,255,.12); margin-bottom:10px
+    }
+    .muted{color:var(--muted)}
+    /* Rooms */
+    .price{display:flex; gap:.4rem; align-items:baseline}
+    .price .num{font-weight:800; font-size:1.4rem}
+    .includes{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .pill{border:1px solid rgba(255,255,255,.12); padding:6px 10px; border-radius:999px; font-size:.85rem}
+    /* Gallery */
+    .gallery{display:grid; grid-template-columns:2fr 1fr 1fr; gap:10px}
+    .gallery img{width:100%; height:100%; object-fit:cover; border-radius:14px; border:1px solid rgba(255,255,255,.08)}
+    .g-tall{grid-row:span 2}
+    /* Location */
+    .map{border:0; width:100%; height:360px; border-radius:var(--radius); box-shadow:var(--shadow)}
+    .poi{display:grid; grid-template-columns:24px 1fr auto; gap:10px; align-items:center}
+    .ok{color:var(--ok)} .warn{color:var(--warn)}
+    /* Testimonials */
+    .quotes{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    blockquote{margin:0; padding:18px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius)}
+    blockquote footer{margin-top:10px; font-weight:600}
+    /* FAQ */
+    details{border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.04); border-radius:12px; padding:14px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer; font-weight:600}
+    /* Form */
+    form{display:grid; gap:12px}
+    .field{display:grid; gap:6px}
+    label{font-weight:600}
+    input, select, textarea{
+      background:#0d1428; color:var(--text); border:1px solid rgba(255,255,255,.1);
+      border-radius:10px; padding:12px; outline:none
+    }
+    input:focus, select:focus, textarea:focus{box-shadow:var(--ring); border-color:var(--accent)}
+    .two{display:grid; gap:12px; grid-template-columns:1fr 1fr}
+    /* Footer */
+    footer{padding:26px 0 40px; border-top:1px solid rgba(255,255,255,.08); color:var(--muted)}
+    .foot{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap}
+    /* Floating WA */
+    .wa{
+      position:fixed; right:20px; bottom:20px; z-index:60;
+      background:#25D366; color:#041018; font-weight:800;
+      box-shadow:0 12px 30px rgba(37,211,102,.35)
+    }
+    @media (max-width:1000px){
+      .hero-inner{grid-template-columns:1fr}
+      .grid-4{grid-template-columns:repeat(2,1fr)}
+      .quotes{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .grid-3{grid-template-columns:1fr}
+      .grid-4{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+      .two{grid-template-columns:1fr}
+      .quotes{grid-template-columns:1fr}
+    }
+  </style>
+  <!-- (Opsional) Jika kamu punya file styles.css sendiri, biarkan ini. -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#">
+      <div class="brand-logo" aria-hidden="true"></div>
+      <div>
+        <div style="font-size:15px; opacity:.8; letter-spacing:.12em">PALA</div>
+        <div style="margin-top:-4px; font-size:18px">ROOMS</div>
+      </div>
+    </a>
+
+    <!-- Tombol menu untuk mobile -->
+    <button class="btn btn-ghost menu-toggle"
+            aria-label="Buka menu"
+            aria-controls="site-nav"
+            aria-expanded="false"
+            onclick="toggleNav(this)">
+      Menu
+    </button>
+
+    <!-- SATU sumber menu untuk desktop & mobile -->
+    <nav id="site-nav" class="nav-links">
+      <a href="#fasilitas">Fasilitas</a>
+      <a href="#kamar">Kamar & Harga</a>
+      <a href="#galeri">Galeri</a>
+      <a href="#lokasi">Lokasi</a>
+      <a href="#faq">FAQ</a>
+      <a href="#booking" class="btn btn-primary">Booking</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="badge">Premium Kost • Fully Furnished • Security 24/7</span>
+        <h1>Nyaman, Aman, dan Strategis — <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent;">Premium Kost</span> untuk Hidup Lebih Produktif</h1>
+        <p class="lead">Kamar eksklusif berperabot, Wi-Fi up to 200 Mbps, smart access, laundry & cleaning terjadwal. Dekat kampus dan pusat bisnis. <b>Mulai Rp 2.500.000/bulan</b>.</p>
+        <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap">
+          <a href="#booking" class="btn btn-primary">Cek Ketersediaan</a>
+          <a href="https://wa.me/6281234567890?text=Halo%20Kost%20Elite,%20saya%20ingin%20tanya%20ketersediaan%20kamar." class="btn btn-ghost">Chat WhatsApp</a>
+        </div>
+        <div class="stats" style="margin-top:18px">
+          <div class="stat"><div class="muted">Kamar Tersedia</div><b>7</b></div>
+          <div class="stat"><div class="muted">Rating Tamu</div><b>4.9/5</b></div>
+          <div class="stat"><div class="muted">Wi-Fi</div><b>200 Mbps</b></div>
+        </div>
+      </div>
+      <div class="kv">
+        <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1200&auto=format&fit=crop" alt="Kamar kost premium modern, rapi dan nyaman" loading="eager">
+        <div class="ribbons">
+          <span class="chip">Diskon 10% sewa 6 bulan</span>
+          <span class="chip">Gratis Laundry 4x/bulan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FASILITAS -->
+  <section id="fasilitas">
+    <div class="container">
+      <div class="section-title">
+        <h2>Fasilitas Lengkap</h2>
+        <span class="muted">Dirancang untuk tinggal yang tenang & produktif</span>
+      </div>
+      <div class="grid-4">
+        <div class="card">
+          <div class="icon" aria-hidden="true">🛏️</div>
+          <h3>Kamar Berperabot</h3>
+          <p class="muted">Bed premium, lemari, meja kerja ergonomis, kursi nyaman, tirai blackout.</p>
+        </div>
+        <div class="card">
+          <div class="icon">❄️</div>
+          <h3>AC & Sirkulasi</h3>
+          <p class="muted">Pendingin hemat energi + jendela besar untuk cahaya alami.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📶</div>
+          <h3>Wi-Fi Cepat</h3>
+          <p class="muted">Internet stabil hingga 200 Mbps, ideal WFH & kuliah online.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🛁</div>
+          <h3>Kamar Mandi Dalam</h3>
+          <p class="muted">Water heater, shower tekanan tinggi, exhaust, & rak toiletries.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🧺</div>
+          <h3>Laundry & Cleaning</h3>
+          <p class="muted">Laundry terjadwal & pembersihan kamar mingguan.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🍳</div>
+          <h3>Dapur Bersama</h3>
+          <p class="muted">Pantry, kulkas, dispenser, & area makan bersih.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🎥</div>
+          <h3>CCTV & Akses</h3>
+          <p class="muted">CCTV 24/7, smart lock, tamu tercatat, jam tenang.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🅿️</div>
+          <h3>Parkir</h3>
+          <p class="muted">Parkir aman untuk motor dan sepeda; mobil terbatas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KAMAR & HARGA -->
+  <section id="kamar">
+    <div class="container">
+      <div class="section-title">
+        <h2>Tipe Kamar & Harga</h2>
+        <span class="muted">Harga sudah termasuk listrik & Wi-Fi</span>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <span class="badge">Single</span>
+          <h3 style="margin:.6rem 0">Studio Comfort</h3>
+          <div class="price"><span class="num">Rp 2.500.000</span><span class="muted">/bulan</span></div>
+          <div class="includes">
+            <span class="pill">Bed 120×200</span>
+            <span class="pill">Meja kerja</span>
+            <span class="pill">AC</span>
+            <span class="pill">KM dalam</span>
+          </div>
+          <div style="margin-top:14px; display:flex; gap:10px">
+            <a href="#booking" class="btn btn-primary">Booking</a>
+            <a href="https://wa.me/6281234567890?text=Minat%20Studio%20Comfort" class="btn btn-ghost">Tanya</a>
+          </div>
+        </div>
+        <div class="card" style="outline:2px solid rgba(34,211,238,.4)">
+          <span class="badge">Paling Favorit</span>
+          <h3 style="margin:.6rem 0">Deluxe Plus</h3>
+          <div class="price"><span class="num">Rp 3.300.000</span><span class="muted">/bulan</span></div>
+          <div class="includes">
+            <span class="pill">Bed 160×200</span>
+            <span class="pill">Jendela besar</span>
+            <span class="pill">Water heater</span>
+            <span class="pill">Smart lock</span>
+          </div>
+          <div style="margin-top:14px; display:flex; gap:10px">
+            <a href="#booking" class="btn btn-primary">Booking</a>
+            <a href="https://wa.me/6281234567890?text=Minat%20Deluxe%20Plus" class="btn btn-ghost">Tanya</a>
+          </div>
+        </div>
+        <div class="card">
+          <span class="badge">Terbatas</span>
+          <h3 style="margin:.6rem 0">Executive Corner</h3>
+          <div class="price"><span class="num">Rp 3.900.000</span><span class="muted">/bulan</span></div>
+          <div class="includes">
+            <span class="pill">Bed 180×200</span>
+            <span class="pill">Sofa & TV</span>
+            <span class="pill">Jendela sudut</span>
+            <span class="pill">Pantry mini</span>
+          </div>
+          <div style="margin-top:14px; display:flex; gap:10px">
+            <a href="#booking" class="btn btn-primary">Booking</a>
+            <a href="https://wa.me/6281234567890?text=Minat%20Executive%20Corner" class="btn btn-ghost">Tanya</a>
+          </div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:10px">* Minimal sewa 3 bulan. Deposit 1 bulan. Syarat & ketentuan berlaku.</p>
+    </div>
+  </section>
+
+  <!-- GALERI -->
+  <section id="galeri">
+    <div class="container">
+      <div class="section-title">
+        <h2>Galeri</h2>
+        <span class="muted">Lihat suasana kamar & area bersama</span>
+      </div>
+      <div class="gallery">
+        <img class="g-tall" src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop" alt="Kamar dengan jendela besar">
+        <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1200&auto=format&fit=crop" alt="Meja kerja ergonomis">
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1200&auto=format&fit=crop" alt="Area komunal">
+        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1200&auto=format&fit=crop" alt="Kamar mandi modern">
+        <img src="https://images.unsplash.com/photo-1560185009-5bf9f2849485?q=80&w=1200&auto=format&fit=crop" alt="Koridor rapi">
+      </div>
+    </div>
+  </section>
+
+  <!-- LOKASI -->
+  <section id="lokasi">
+    <div class="container">
+      <div class="section-title">
+        <h2>Lokasi Strategis</h2>
+        <span class="muted">Jl. Contoh No. 123, Kota Anda</span>
+      </div>
+      <div class="grid-3">
+        <div class="card" style="grid-column:span 2">
+          <iframe class="map" src="https://www.google.com/maps?q=Monas%20Jakarta&output=embed" loading="lazy" title="Peta lokasi PALA ROOMS"></iframe>
+        </div>
+        <div class="card" style="display:grid; gap:12px">
+          <div class="poi"><span>🎓</span><div>Kampus Utama</div><div class="ok">5 menit</div></div>
+          <div class="poi"><span>🛍️</span><div>Mall & Groceries</div><div class="ok">7 menit</div></div>
+          <div class="poi"><span>🚇</span><div>Stasiun / Halte BRT</div><div class="ok">4 menit</div></div>
+          <div class="poi"><span>🏥</span><div>Rumah Sakit</div><div class="ok">8 menit</div></div>
+          <div class="poi"><span>🍜</span><div>Pusat Kuliner</div><div class="ok">3 menit</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONI -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Testimoni Tamu</h2>
+        <span class="muted">Kenyamanan mereka adalah prioritas kami</span>
+      </div>
+      <div class="quotes">
+        <blockquote>
+          “Kamar bersih, Wi-Fi kencang, dan tim sangat responsif. Nyaman untuk WFH.”
+          <footer>— Rani, Analis Data</footer>
+        </blockquote>
+        <blockquote>
+          “Lokasi super strategis, ke kampus cuma 5 menit. Worth the price!”
+          <footer>— Dimas, Mahasiswa</footer>
+        </blockquote>
+        <blockquote>
+          “Suka banget smart lock & CCTV. Rasa hotel tapi harga kost.”
+          <footer>— Yani, Konsultan</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title">
+        <h2>Pertanyaan Umum (FAQ)</h2>
+        <span class="muted">Butuh info lain? Chat kami via WhatsApp</span>
+      </div>
+      <details>
+        <summary>Apakah listrik dan air sudah termasuk?</summary>
+        <div class="muted">Ya, semua harga sudah termasuk listrik wajar & air. Pemakaian berlebih mengikuti ketentuan.</div>
+      </details>
+      <details>
+        <summary>Apakah boleh membawa tamu?</summary>
+        <div class="muted">Boleh berkunjung pada jam tertentu (09.00–21.00). Menginap tidak diperbolehkan.</div>
+      </details>
+      <details>
+        <summary>Minimal sewa & deposit?</summary>
+        <div class="muted">Minimal 3 bulan, deposit 1 bulan (dikembalikan saat check-out sesuai kondisi).</div>
+      </details>
+      <details>
+        <summary>Parkir mobil tersedia?</summary>
+        <div class="muted">Slot mobil terbatas, wajib reservasi. Parkir motor & sepeda tersedia.</div>
+      </details>
+      <!-- FAQ: Lokasi Strategis (TAMBAHAN) -->
+      <details>
+        <summary>Di mana lokasi tepatnya?</summary>
+        <div class="muted">
+          Kami beralamat di <b>Jl. CONTOH NO. 123, KECAMATAN, KOTA</b>. Lokasi mudah ditemukan di Maps—cukup ketik “PALA ROOMS”.
+        </div>
+      </details>
+      <details>
+        <summary>Seberapa dekat dengan kampus/perkantoran?</summary>
+        <div class="muted">
+          Kampus <b>XYZ</b> ±<b>5 menit</b> naik motor, kawasan perkantoran <b>CBD ABC</b> ±<b>10 menit</b>. Cocok untuk mahasiswa dan pekerja.
+        </div>
+      </details>
+      <details>
+        <summary>Transportasi umum terdekat?</summary>
+        <div class="muted">
+          Halte BRT <b>Stasiun Utama</b> ±<b>400 m</b> (5 menit jalan). Akses ojek online & taksi 24 jam.
+        </div>
+      </details>
+      <details>
+        <summary>Fasilitas sekitar apa saja?</summary>
+        <div class="muted">
+          Minimarket 24 jam (<b>200 m</b>), laundry kiloan (<b>300 m</b>), pusat kuliner (<b>500 m</b>), dan mall <b>Sunshine</b> ±<b>8 menit</b>.
+        </div>
+      </details>
+      <details>
+        <summary>Bagaimana akses ke jalan tol/arteri?</summary>
+        <div class="muted">
+          Gerbang tol <b>Gerbang ABC</b> ±<b>12 menit</b>, jalan arteri <b>Jl. Besar</b> hanya <b>2 menit</b> dari kost.
+        </div>
+      </details>
+      <details>
+        <summary>Apakah area bebas banjir dan aman?</summary>
+        <div class="muted">
+          Area kami <b>bebas banjir</b> dan lingkungan <b>aman</b>. Tersedia <b>CCTV 24/7</b> & akses pintu <b>smart lock</b>.
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking">
+    <div class="container">
+      <div class="section-title">
+        <h2>Booking / Cek Ketersediaan</h2>
+        <span class="muted">Isi formulir, tim kami akan menghubungi melalui WhatsApp</span>
+      </div>
+      <div class="grid-3">
+        <div class="card" style="grid-column:span 2">
+          <form action="#" method="post" onsubmit="return handleSubmit(event)">
+            <div class="two">
+              <div class="field">
+                <label for="nama">Nama Lengkap</label>
+                <input id="nama" name="nama" required placeholder="Nama Anda">
+              </div>
+              <div class="field">
+                <label for="wa">Nomor WhatsApp</label>
+                <input id="wa" name="wa" type="tel" required placeholder="08xxxxxxxxxx">
+              </div>
+            </div>
+            <div class="two">
+              <div class="field">
+                <label for="tipe">Pilih Tipe Kamar</label>
+                <select id="tipe" name="tipe" required>
+                  <option value="" disabled selected>Pilih salah satu</option>
+                  <option>Studio Comfort — Rp 2.500.000</option>
+                  <option>Deluxe Plus — Rp 3.300.000</option>
+                  <option>Executive Corner — Rp 3.900.000</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="checkin">Target Check-in</label>
+                <input id="checkin" name="checkin" type="date" required>
+              </div>
+            </div>
+            <div class="two">
+              <div class="field">
+                <label for="durasi">Durasi Sewa</label>
+                <select id="durasi" name="durasi" required>
+                  <option value="" disabled selected>Pilih durasi</option>
+                  <option>3 bulan</option>
+                  <option>6 bulan</option>
+                  <option>12 bulan</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="kunjungan">Jadwal Survey</label>
+                <input id="kunjungan" name="kunjungan" type="datetime-local">
+              </div>
+            </div>
+            <div class="field">
+              <label for="catatan">Catatan Tambahan</label>
+              <textarea id="catatan" name="catatan" rows="4" placeholder="Preferensi lantai, arah jendela, parkir, dsb."></textarea>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+              <button class="btn btn-primary" type="submit">Kirim Formulir</button>
+              <a class="btn btn-ghost" href="https://wa.me/6281234567890?text=Halo%20Kost%20Elite,%20saya%20ingin%20booking">Chat Admin</a>
+              <span class="muted">Dengan mengirim, Anda setuju pada kebijakan hunian & ketentuan sewa.</span>
+            </div>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Kontak & Jam Operasional</h3>
+          <p class="muted">Senin–Minggu • 08.00–21.00</p>
+          <p><b>Alamat</b><br>Jl. Contoh No. 123, Kecamatan, Kota, 12345</p>
+          <p><b>Telepon</b><br><a href="tel:+6281234567890">+62 812-3456-7890</a></p>
+          <p><b>Email</b><br><a href="mailto:halo@kostelite.id">halo@kostelite.id</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot">
+    <div>© <span id="y"></span> PALA ROOMS. Semua hak dilindungi.</div>
+    <div class="muted">Kebijakan Privasi • Syarat & Ketentuan</div>
+  </div>
+</footer>
+
+<a class="btn wa" href="https://wa.me/6281234567890?text=Halo%20Kost%20Elite,%20saya%20ingin%20tanya%20kamar%20tersedia" aria-label="Chat WhatsApp">
+  💬 WhatsApp
+</a>
+
+<!-- JSON-LD Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "PALA ROOMS",
+  "description": "Kost premium dengan kamar berperabot, AC, Wi-Fi cepat, laundry, cleaning, dan keamanan 24 jam. Lokasi strategis dekat kampus dan pusat bisnis.",
+  "url": "https://kostelite.id",
+  "telephone": "+62-812-3456-7890",
+  "priceRange": "Rp 2.5jt - 3.9jt/bulan",
+  "address": { "@type": "PostalAddress", "streetAddress": "Jl. Contoh No. 123", "addressLocality": "Kota Anda", "postalCode": "12345", "addressCountry": "ID" },
+  "amenityFeature": [
+    {"@type":"LocationFeatureSpecification","name":"Wi-Fi 200 Mbps","value":true},
+    {"@type":"LocationFeatureSpecification","name":"AC","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Kamar mandi dalam","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Laundry & Cleaning","value":true},
+    {"@type":"LocationFeatureSpecification","name":"CCTV 24/7 & Smart Lock","value":true}
+  ]
+}
+</script>
+
+<script>
+  // Toggle nav untuk mobile (header responsif satu-sumber)
+  function toggleNav(btn){
+    const nav = document.getElementById('site-nav');
+    const isOpen = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
+  }
+
+  // Tahun otomatis
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Submit handler (dummy) – ganti dengan webhook n8n Anda
+  function handleSubmit(e){
+    e.preventDefault();
+    const f = e.target;
+    const data = {
+      nama: f.nama.value,
+      wa: f.wa.value,
+      tipe: f.tipe.value,
+      checkin: f.checkin.value,
+      durasi: f.durasi.value,
+      kunjungan: f.kunjungan.value,
+      catatan: f.catatan.value
+    };
+    // Contoh: arahkan ke WhatsApp dengan ringkasan
+    const teks = encodeURIComponent(
+      `Halo PALA ROOMS, saya ingin booking.\n`+
+      `Nama: ${data.nama}\nWA: ${data.wa}\n`+
+      `Tipe: ${data.tipe}\nCheck-in: ${data.checkin}\nDurasi: ${data.durasi}\n`+
+      (data.kunjungan ? `Survey: ${data.kunjungan}\n` : ``) +
+      (data.catatan ? `Catatan: ${data.catatan}` : ``)
+    );
+    window.open(`https://wa.me/6281234567890?text=${teks}`, '_blank');
+    return false;
+  }
+</script>
+</body>
+</html>
